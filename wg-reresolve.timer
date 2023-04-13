@@ -1,0 +1,9 @@
+[Unit]
+Description=wg-reconnect timer
+
+[Timer]
+Unit=wg-reresolve.service
+OnUnitActiveSec=60sec
+
+[Install]
+WantedBy=timers.target

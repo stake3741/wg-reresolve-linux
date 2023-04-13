@@ -1,0 +1,8 @@
+[Unit]
+Description=wg-reconnect-dns
+
+[Service]
+Type=oneshot
+RemainAfterExit=False
+ExecStart=/usr/bin/timeout 3 /bin/ping <YOUR IP> -c 1
+ExecStopPost=/bin/sh -c 'if [ "$$EXIT_STATUS" != 0 ]; then /bin/systemctl restart wg-quick@wg0.service; fi'
